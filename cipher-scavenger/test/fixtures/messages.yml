@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  encoded: MyString
+  decoded: MyString
+  level: 1
+
+two:
+  encoded: MyString
+  decoded: MyString
+  level: 1

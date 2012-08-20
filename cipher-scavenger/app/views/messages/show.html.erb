@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Encoded:</b>
+  <%= @message.encoded %>
+</p>
+
+<p>
+  <b>Decoded:</b>
+  <%= @message.decoded %>
+</p>
+
+<p>
+  <b>Level:</b>
+  <%= @message.level %>
+</p>
+
+
+<%= link_to 'Edit', edit_message_path(@message) %> |
+<%= link_to 'Back', messages_path %>
