@@ -83,19 +83,8 @@ class MessagesController < ApplicationController
 
   def getqrcode
     @message = Message.find(params[:id])
-    id = @message.id
-    encoded = @message.encoded
-    level = @message.level
 
-    dict = {}
-    dict[:id] = id
-    dict[:encoded] = encoded
-    dict[:level] = level
-    j = ActiveSupport::JSON
-    test = j.encode(dict)
-
-
-    @url = "https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl=" + test
+    @url = @message.get_qr_code_url
 
     respond_to do |format|
       format.html
