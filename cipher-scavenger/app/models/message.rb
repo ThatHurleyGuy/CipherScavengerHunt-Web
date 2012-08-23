@@ -10,6 +10,6 @@ class Message < ActiveRecord::Base
 		j = ActiveSupport::JSON
 		test = j.encode(dict)
 
-		return "https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl=" + test
+		return "https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl=" + URI.escape(test)
 	end
 end

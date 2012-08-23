@@ -87,7 +87,8 @@ class TeamsController < ApplicationController
 
     if(team.pin != pin)
       # Error
-      render :file => "public/401.html", :status => :unauthorized
+      render :json => {:error => 401}.to_json
+      return
     end
 
     message = team.message

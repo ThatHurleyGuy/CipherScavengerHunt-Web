@@ -4,7 +4,7 @@ CipherScavenger::Application.routes.draw do
   resources :messages
 
   match 'messages/:id/getqrcode' => 'messages#getqrcode'
-  match 'teams/:id/getmessage' => 'teams#get_message'
+  match 'getmessage' => 'teams#get_message'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
