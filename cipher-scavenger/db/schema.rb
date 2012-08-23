@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(:version => 20120822012209) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "scans", :force => true do |t|
+    t.integer  "team_id_scanner"
+    t.integer  "team_id_scannee"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
   create_table "teams", :force => true do |t|
     t.string   "name"
     t.integer  "pin"

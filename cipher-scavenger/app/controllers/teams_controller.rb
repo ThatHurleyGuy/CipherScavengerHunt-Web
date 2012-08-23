@@ -95,4 +95,13 @@ class TeamsController < ApplicationController
 
     render :json => {:url => message.get_qr_code_url}.to_json
   end
+
+  def scoreboard
+    @teams = Team.all
+
+    respond_to do |format|
+      format.html # scoreboard.html.erb
+      format.json { render :json => @teams }
+    end
+  end
 end

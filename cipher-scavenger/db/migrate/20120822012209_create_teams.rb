@@ -16,5 +16,11 @@ class CreateTeams < ActiveRecord::Migration
 
     	t.timestamps
     end
+    create_table :scans do |t|
+        t.integer :team_id_scanner
+        t.integer :team_id_scannee
+
+        t.timestamps
+    end
   end
 end
