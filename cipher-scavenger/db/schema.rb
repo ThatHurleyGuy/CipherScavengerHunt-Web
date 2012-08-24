@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20120822012209) do
   end
 
   create_table "teams", :force => true do |t|
+    t.string   "netid"
     t.string   "name"
     t.integer  "pin"
     t.integer  "score"

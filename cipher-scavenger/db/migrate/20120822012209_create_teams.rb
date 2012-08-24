@@ -1,6 +1,7 @@
 class CreateTeams < ActiveRecord::Migration
   def change
     create_table :teams do |t|
+        t.string :netid
     	t.string :name
     	t.integer :pin
     	t.integer :score

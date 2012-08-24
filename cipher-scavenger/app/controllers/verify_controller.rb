@@ -13,7 +13,9 @@ class VerifyController < ApplicationController
 
 		scan = Scan.where("team_id_scanner = ? AND team_id_scannee = ?", crack_team.id, host_team.id)
 
-		if not scan.nil?
+		if not scan[0].nil?
+			puts scan[0].scanner
+			puts scan[0].scannee
 			render :json => {:result => false, :reason => "Already Scanned"}.to_json
 			return
 		end
@@ -24,9 +26,11 @@ class VerifyController < ApplicationController
 			host_team.save
 			crack_team.save
 			Scan.create(:scanner => crack_team, :scannee => host_team);
+			render :json => {:result => correct}.to_json
+		else
+			render :json => {:result => correct, :reason => "Incorrect Decoding"}.to_json
 		end
 
-		render :json => {:result => correct}.to_json
 	end
 
 end
