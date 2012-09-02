@@ -1,0 +1,13 @@
+<%= form_for(@team, :url => 'forgot_pin_action', :method => :post) do |f| %>
+  <div class="field">
+    <%= f.label "Team Name" %><br />
+    <%= f.text_field :name %>
+  </div>  
+  <div class="field">
+    <%= f.label :netid %><br />
+    <%= f.text_field :netid %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Lookup Pin" %>
+  </div>
+<% end %>

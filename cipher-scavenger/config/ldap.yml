@@ -1,4 +1,0 @@
-host: "ad.uiuc.edu"
-port: 636
-secure: true
-base_dn: "ou=Campus Accounts,dc=ad,dc=uiuc,dc=edu"

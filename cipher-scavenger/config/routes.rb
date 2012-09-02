@@ -1,11 +1,5 @@
 CipherScavenger::Application.routes.draw do
-  resources :teams
-
-  resources :messages
-
-  match 'messages/:id/getqrcode' => 'messages#getqrcode'
-  match 'getmessage' => 'teams#get_message'
-  match 'scoreboard' => 'teams#scoreboard'
+  resources :teams, :except => [:show, :edit, :destroy, :update, :index]
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -64,5 +58,11 @@ CipherScavenger::Application.routes.draw do
   # match ':controller(/:action(/:id))(.:format)'
 
   match "verify", :to => "verify#show", :via => :post
-
+  match 'myteam' => 'teams#show', :via => :post
+  match 'forgotpin' => 'teams#forgotpin' 
+  match 'forgot_pin_action' => 'teams#forgot_pin_action', :via => :post
+  match 'newteam' => 'teams#new'
+  match 'getmessage' => 'teams#get_message', :via => :post
+  match 'scoreboard' => 'teams#scoreboard'
+  root :to => "teams#scoreboard"
 end
