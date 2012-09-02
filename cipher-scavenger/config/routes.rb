@@ -64,5 +64,6 @@ CipherScavenger::Application.routes.draw do
   match 'newteam' => 'teams#new'
   match 'getmessage' => 'teams#get_message', :via => :post
   match 'scoreboard' => 'teams#scoreboard'
+  match "help" => "static_pages#help", :via => :get
   root :to => "teams#scoreboard"
 end

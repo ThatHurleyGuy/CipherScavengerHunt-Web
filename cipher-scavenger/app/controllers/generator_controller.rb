@@ -2,25 +2,23 @@ class GeneratorController < ApplicationController
 	
 	def self.initialize_database
 		name = "Ramrod"
-		decoded1 = "Hey this is a test"
+		decoded1 = "Test with a period."
 		decoded2 = "Woah a QR code on a phone"
 		encoded = ""
 		parity = ""
 		level = rand(3) + 1
 		pin = rand(8999) + 1000
-		if level == 1
-			encoded = encode_level1(decoded1)
-		elsif level == 2
-			encoded = encode_level2(decoded1)
-		elsif level == 3 
-			encoded = decoded2
-			parity = encode_level3(decoded1, decoded2)
-		end
-				
-		message = Message.create(:level => level, :decoded => decoded1, :encoded => encoded, :parity => parity)	
-		team = Team.create(:name => name, :pin => pin, :score => 0, :message => message)
-		message.team = team
-		message.save
+
+		encoded = encode_level1(decoded1)
+		puts "Decoded " + decoded1 + " Encoded " + encoded + " parity " + parity
+
+		encoded = encode_level2(decoded1)
+		puts "Decoded " + decoded1 + " Encoded " + encoded + " parity " + parity
+
+		encoded = decoded2
+		parity = encode_level3(decoded1, decoded2)
+		puts "Decoded " + decoded1 + " Encoded " + encoded + " parity " + parity
+
 	end
 
 	private 
