@@ -2,7 +2,7 @@ class GeneratorController < ApplicationController
 	
 	def self.initialize_database
 		name = "Ramrod"
-		decoded1 = "Test with a period."
+		decoded1 = "Yay Computer Science!"
 		decoded2 = "Woah a QR code on a phone"
 		encoded = ""
 		parity = ""

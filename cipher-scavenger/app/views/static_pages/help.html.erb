@@ -5,9 +5,45 @@
 <li>Install Eclipse and Android. See the <a href="http://courses.engr.illinois.edu/cs125/files/vb/">CS125 page</a> for details. Note that you won't need subversion for this.</li>
 <li>Download the project <%= link_to "Here", "cipher-scavenger-hunt-android.zip" %>. In Eclipse Right Click in the project list area -> Import -> "Existing Projects into Workspace". Select Archive File and browse to the actual .zip of the project.</li>
 <li>Install the app onto the phone. To do this, ensure that the phone is plugged into the machine and has USB debugging turned on (<a href="http://developer.android.com/tools/device.html#setting-up">See step 2</a>). Right click on the project name in eclipse and Run as -> Android Application.</li>
-<li>On first launch the application should take you to the preferences screen. Enter the captains netid, and also the 4 digit pin you copied down earlier. If you lost the pin, you should be able to recover it <%= link_to "Here", "forgotpin" %>. You can now go back and by selecting "View Your Message" it should take you to a screen that shows a QR code. If it says there is a 401 Error, then something has gone wrong with your authentication, so verify that you entered the netid and pin properly.</li>
-<li>Solve level 1 encoding</li>
-<li>Solve level 2 encoding</li>
-<li>Solve level 3 encoding</li>
+<li>On first launch the application should take you to the preferences screen. Enter the captain's netid, and also the 4 digit pin you copied down earlier. If you lost the pin, you should be able to recover it <%= link_to "Here", "forgotpin" %>. You can now go back and by selecting "View Your Message" it should take you to a screen that shows a QR code. If it says there is a 401 Error, then something has gone wrong with your authentication, so verify that you entered the netid and pin properly.</li>
+<li>The level 1 encoding is relatively straight forward. Here are some example messages:
+	<table class="table table-striped table-bordered">
+  		<tr>
+    		<th>Encoded</th>
+    		<th>Decoded</th>
+  		</tr>
+  		<tr>
+			<th>T.h.i.s. .i.s. .a. .t.e.s.t. .m.e.s.s.a.g.e.</th>
+			<th>This is a test message</th>
+  		</tr>
+  		<tr>
+			<th>B.e.w.a.r.e. .o.f. .p.e.r.i.o.d.s...</th>
+			<th>Beware of periods</th>
+  		</tr>
+  		<tr>
+			<th>Y.a.y. .C.o.m.p.u.t.e.r. .S.c.i.e.n.c.e.!.</th>
+			<th>Yay Computer Science!</th>
+  		</tr>
+  	</table>
+
+You are given one String that is currently in the encoded form. You just need to decode and return the actual string. Functions that might be helpful: <%= link_to "charAt", "http://docs.oracle.com/javase/6/docs/api/java/lang/String.html#charAt(int)" %></li>
+<li>Level 2 encoding will be more complicated. With level 1 you could easily see a pattern, but it won't be so easy for this level. Here are a few examples:
+	<table class="table table-striped table-bordered">
+  		<tr>
+    		<th>Encoded</th>
+    		<th>Decoded</th>
+  		</tr>
+  		<tr>
+			<th>VGhpcyBpcyBhIHRlc3QgbWVzc2FnZQ==</th>
+			<th>This is a test message</th>
+  		</tr>
+  		<tr>
+			<th>WWF5IENvbXB1dGVyIFNjaWVuY2Uh</th>
+			<th>Beware of periods</th>
+  		</tr>
+  	</table></li>
+
+As you can see, it looks like complete gibberish! But actually this is encoded in a manner that is very useful in the world of networking. As you may know, computers represent everything in bits. So to represent a String, which is just a sequence of characters, we use <%= link_to "ASCII", "http://www.asciitable.com/" %>. This gives us a way represent the strings easily as bits. What we have done to encode this string, is translate it into a radix-64 representation. Base64 encoding is extremely useful in taking any arbitrary data, and being able to represent it as a string. Base64 encoding is generally used to encode any arbitrary bytes of data, so after decoding it, you will need to construct the actual string from the byte you get back. Read more about Base64 encoding <%= link_to "Here", "http://en.wikipedia.org/wiki/Base64" %>. Since we have given you a string encoded in this form, you will just need to take that string and Base64 decode it. Android is nice enough to provide functionality to do this for you! Can you find the functions to help you within the <%= link_to "android documentation", "http://developer.android.com/reference/packages.html" %>? A great deal of time developing and learning new things will be spent reading documentation such as this, so it's a good idea to learn how to navigate through it! Functions that might be helpful (Other than the Base64 function, you have to find that): <%= link_to "String Constructor for byte array", "http://docs.oracle.com/javase/6/docs/api/java/lang/String.html#String(byte[])" %>
+<li>Level 3 encoding is the most difficult, but also the coolest. To just about everyone who deals with computers, losing data is a nightmare. Because of this there are many methods of backing up data. One of the most common methods of saving data is using redundancy. The idea of redundancy is that you duplicate the data, so that if you should lose the original data, you can restore it using the redundant copy. So one way to do it is just mirror all of the data on another drive. But doesn't this seem a little wasteful? To store 1TB of data you have to spend double the money just to make sure that you can restore the data. Because of this waste, people have spent a lot of time developing cool systems that can save redundant information, without having to just directly mirror it. Thus, <%= link_to "RAID 5", "http://en.wikipedia.org/wiki/RAID_5#RAID_5" %> was born. RAID 5 takes advantage of an extremely powerful, yet very simple operation in computing, <%= link_to "XOR", "http://en.wikipedia.org/wiki/Exclusive_or" %>. XOR is a logical bitwise operation that results in a true value if and only if exactly on of the input values was true. You can read more about it on the wiki page. What this allows RAID5 to do, is XOR the data across several drives, and save the result as the redundant data. Now, if one of the drives fails, RAID can look at the redundant data, compare it to the data that is still alive, and determine what was on the lost drive. It does this because using the XOR of the previous data you can determine what should have gone in the missing spot. Rather than having this document explain the inner workings of RAID, feel free to read elsewhere about RAID - <%= link_to "http://www.scottklarr.com/topic/23/how-raid-5-really-works/", "http://www.scottklarr.com/topic/23/how-raid-5-really-works/" %> <%= link_to "http://blog.open-e.com/how-does-raid-5-work", "http://blog.open-e.com/how-does-raid-5-work" %>. /</li>
 <li>Now go trade with other teams!</li>
 </ol>
