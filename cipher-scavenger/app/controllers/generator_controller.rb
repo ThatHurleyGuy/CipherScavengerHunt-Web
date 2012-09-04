@@ -2,8 +2,8 @@ class GeneratorController < ApplicationController
 	
 	def self.initialize_database
 		name = "Ramrod"
-		decoded1 = "Yay Computer Science!"
-		decoded2 = "Woah a QR code on a phone"
+		decoded1 = "This is a test message"
+		decoded2 = "Suddenly there is a new message from no where"
 		encoded = ""
 		parity = ""
 		level = rand(3) + 1
@@ -38,11 +38,20 @@ class GeneratorController < ApplicationController
 
 	def self.encode_level3(string1, string2)
 		encoded = ""
-		string1.each_byte.zip(string2.each_byte).each do |c1, c2|
-			c1 = 0 if c1.nil?
-			c2 = 0 if c2.nil?
+		if string1.length > string2.length
+			string1.each_byte.zip(string2.each_byte).each do |c1, c2|
+				c1 = 0 if c1.nil?
+				c2 = 0 if c2.nil?
 
-			encoded += (c1 ^ c2).chr
+				encoded += (c1 ^ c2).chr
+			end
+		else
+			string2.each_byte.zip(string1.each_byte).each do |c1, c2|
+				c1 = 0 if c1.nil?
+				c2 = 0 if c2.nil?
+
+				encoded += (c1 ^ c2).chr
+			end
 		end
 
 		return Base64.encode64(encoded)

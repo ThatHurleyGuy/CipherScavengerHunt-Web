@@ -139,7 +139,13 @@ class TeamsController < ApplicationController
 
   def self.encode_level3(string1, string2)
     encoded = ""
-    string1.each_byte.zip(string2.each_byte).each do |c1, c2|
+    if string1.length > string2.length
+      temp = string1
+      string1 = string2
+      string2 = temp
+    end
+
+    string2.each_byte.zip(string1.each_byte).each do |c1, c2|
       c1 = 0 if c1.nil?
       c2 = 0 if c2.nil?
 
