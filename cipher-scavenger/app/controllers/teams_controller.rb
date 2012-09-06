@@ -20,6 +20,17 @@ class TeamsController < ApplicationController
   # POST /teams.json
   def create
     @team = Team.new(params[:team])
+
+    #Quick hack to get rid of foreign characters. Did this seconds before pushing the website, so it's ugly. Oops.
+    if params[:message1].chars.count < params[:message1].bytes.count or params[:message2].chars.count < params[:message2].bytes.count
+      respond_to do |format|
+        format.html {
+          flash[:error] = "No strange characters please"
+          render :action => "new" and return
+        }
+      end
+    end
+
     encoded = ""
     parity = ""
     level = rand(3) + 1
