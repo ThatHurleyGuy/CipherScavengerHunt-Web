@@ -4,9 +4,18 @@
 	This competition will involve you decoding 3 different forms of messages. Each team will have a secret message (or 2) of their choosing. After solving the levels of encoding, you will be tasked with trying to talk to each other team and scanning their message using the application. Each team will be randomly given one of the 3 encodings for their message by the website. Level 1 encoding is worth 1 point, level 2 is worth 2, and level 3 is worth 3. And each time someone scans your team's qr code you get an extra point! So talk to as many teams as possible to see if you can be at the top of the scoreboard!
 </p>
 
+<div class="alert">
+  <h3>Project day 2 update</h3>
+  <ol>
+    <li>Note that there has been a new project posted <%= link_to "Here", "cipher-hunt-android.zip" %>. It changes the api reuirements for the project. This is due to the limited size of the virtualbox disk. For those of you who installed eclipse on your own machines, *high fives* this doesn't matter.</li>
+    <li>Another tip for people using virtualbox, if you are having trouble getting the virtual machine to recognize the phone while it's plugged in. You made need to follow <%= link_to "these steps.", "http://forum.xda-developers.com/showthread.php?t=570452" %></li>
+    <li>For people who are still having compiler errors (Lots of red in eclipse), did you follow the last part of the original step 2 below? Make sure you have the proper api levels installed!</li>
+  </ol>
+</div>
+
 <ol>
 <li>First off, on this website click on the "New Team" option. Select one of your team members to be the "Captain" and use his/her netid. Choose a team name, and 2 secret messages. These messages should be short, just one plain text english sentences with no foreign characters. After successfully creating your team, you will see a screen with a 4 digit pin, be sure to copy this pin down. Your team should now show up on the leaderboard!</li>
-<li>Install Eclipse and Android. See the <a href="http://courses.engr.illinois.edu/cs125/files/vb/">CS125 page</a> for details. Note that you won't need subversion for this project. Also you will need to be sure that android api versions 8 and 16 are installed for this project.</li>
+<li>Install Eclipse and Android. See the <a href="http://courses.engr.illinois.edu/cs125/files/vb/">CS125 page</a> for details. Note that you won't need subversion for this project. Also you will need to be sure that android api version 8 is installed for this project.</li>
 <li>Download the project <%= link_to "Here", "cipher-hunt-android.zip" %>. In Eclipse Right Click in the project list area -> Import -> "Existing Projects into Workspace". Select Archive File and browse to the actual .zip of the project.</li>
 <li>Install the app onto the phone. To do this, ensure that the phone is plugged into the machine and has USB debugging turned on (<a href="http://developer.android.com/tools/device.html#setting-up">See step 2</a>). Right click on the project name in eclipse and Run as -> Android Application.</li>
 <li>On first launch the application should take you to the preferences screen. Enter the captain's netid, and also the 4 digit pin you copied down earlier. If you lost the pin, you should be able to recover it <%= link_to "Here", "forgotpin" %>. You can now go back and by selecting "View Your Message" it should take you to a screen that shows a QR code. If it says there is a 401 Error, then something has gone wrong with your authentication, so verify that you entered the netid and pin properly.</li>
