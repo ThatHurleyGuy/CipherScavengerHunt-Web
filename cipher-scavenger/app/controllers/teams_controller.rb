@@ -19,7 +19,7 @@ class TeamsController < ApplicationController
   # POST /teams
   # POST /teams.json
   def create
-    @team = Team.new(params[:team])
+    /@team = Team.new(params[:team])
 
     #Quick hack to get rid of foreign characters. Did this seconds before pushing the website, so it's ugly. Oops.
     if params[:message1].chars.count < params[:message1].bytes.count or params[:message2].chars.count < params[:message2].bytes.count
@@ -58,7 +58,7 @@ class TeamsController < ApplicationController
       else
         format.html { render :action => "new" }
       end
-    end
+    end/
   end
 
   # PUT /teams/1
